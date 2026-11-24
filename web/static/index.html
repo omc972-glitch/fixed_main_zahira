@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔬 Laboratuvar Simülasyon Merkezi</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="btn-back" class="btn-ghost hidden">← Ana Menü</button>
+      <h1 id="topbar-title">🔬 Laboratuvar Simülasyon Merkezi</h1>
+    </div>
+    <button id="btn-theme" class="btn-ghost" title="Tema Değiştir">🌙 Koyu Tema</button>
+  </header>
+
+  <main id="view-menu" class="menu-grid"></main>
+
+  <main id="view-experiment" class="exp-layout hidden">
+    <div id="exp-header" class="exp-header">
+      <div id="exp-title" class="exp-title"></div>
+      <div id="exp-subtitle" class="exp-subtitle"></div>
+    </div>
+
+    <section class="exp-workspace">
+      <aside id="zahira-panel" class="panel zahira-panel"></aside>
+      <div class="resizer resizer-v" data-var="--col-left" data-edge="left" title="Sürükle (çift tık: sıfırla)"></div>
+
+      <section class="panel plot-panel">
+        <div id="plot-container" class="plot-container"></div>
+      </section>
+
+      <div class="resizer resizer-v" data-var="--col-right" data-edge="right" title="Sürükle (çift tık: sıfırla)"></div>
+      <aside class="right-column">
+        <div class="panel results-panel">
+          <h3>📊 Sonuçlar</h3>
+          <div id="results-content">
+            <p><i>Parametreleri ayarlayın ve <b>Simülasyonu Başlat</b> düğmesine basın.</i></p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="resizer resizer-h" data-var="--bottom-h" data-edge="bottom" title="Sürükle (çift tık: sıfırla)"></div>
+
+    <section class="exp-bottom">
+      <div class="panel params-box">
+        <h4>⚙️ Parametreler</h4>
+        <div id="params-grid" class="params-grid"></div>
+      </div>
+
+      <div class="panel controls-box">
+        <h4>▶ Kontrol</h4>
+        <button id="btn-start" class="btn-primary">▶ Simülasyonu Başlat</button>
+        <button id="btn-pause" class="btn-secondary" disabled>⏸ Duraklat</button>
+        <button id="btn-reset" class="btn-secondary">⟲ Sıfırla</button>
+
+        <div class="speed-row">
+          <label for="speed-select">Hız:</label>
+          <select id="speed-select">
+            <option value="90">Yavaş</option>
+            <option value="40" selected>Normal</option>
+            <option value="15">Hızlı</option>
+            <option value="1">Çok hızlı</option>
+          </select>
+        </div>
+
+        <div class="progress-wrap">
+          <div id="progress-bar" class="progress-bar"></div>
+          <span id="progress-text">0%</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="error-toast" class="toast hidden"></div>
+  <script type="module" src="/static/js/app.js"></script>
+  <script type="module" src="/static/js/resizer.js"></script>
+</body>
+</html>
